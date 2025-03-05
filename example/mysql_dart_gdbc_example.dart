@@ -1,5 +1,8 @@
+// Copyright (c) 2025- All mysql_dart_gdbc authors. All rights reserved.
+//
+// This source code is licensed under Apache 2.0 License.
+
 import 'package:mysql_client/mysql_client.dart';
-import 'package:mysql_dart_gdbc/mysql_dart_gdbc.dart';
 
 Future<void> main(List<String> arguments) async {
   print("Connecting to mysql server...");

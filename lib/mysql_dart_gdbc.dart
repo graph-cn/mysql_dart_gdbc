@@ -1,6 +1,7 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
+// Copyright (c) 2025- All mysql_dart_gdbc authors. All rights reserved.
+//
+// This source code is licensed under Apache 2.0 License.
+
 library;
 
 import 'dart:async';
