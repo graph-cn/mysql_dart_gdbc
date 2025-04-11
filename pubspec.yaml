@@ -1,8 +1,7 @@
 name: mysql_dart_gdbc
-description: A starting point for Dart libraries or applications.
+description: A Dart implementation of GDBC for MySQL.
 version: 0.0.5
 repository: https://github.com/CorvusYe/mysql_dart_gdbc.git
-publish_to: none
 
 environment:
   sdk: ^3.5.4
@@ -12,7 +11,7 @@ dependencies:
   mysql_client:
     git:
       url: https://github.com/CorvusYe/mysql.dart.git
-  dart_gdbc: 0.0.5
+  dart_gdbc: ^0.0.5
   # dart_gdbc: 
   #   path: ../../
 
