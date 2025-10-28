@@ -14,14 +14,19 @@ class MySqlDriver extends Driver {
   Future<Connection> connect(
     String url, {
     Map<String, dynamic>? properties,
+    Function()? onClose,
   }) async {
     var address = _parseURL(url);
     address.queryParameters.forEach((key, value) {
       properties![key] = value;
     });
     Completer waiter = Completer();
-    var conn = MySqlConnectionProxy._create(address,
-        properties: properties, waiter: waiter);
+    var conn = MySqlConnectionProxy._create(
+      address,
+      properties: properties,
+      waiter: waiter,
+      onClose: onClose,
+    );
     await waiter.future;
     return conn;
   }

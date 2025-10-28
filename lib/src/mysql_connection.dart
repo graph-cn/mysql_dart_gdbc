@@ -7,6 +7,10 @@ part of '../mysql_dart_gdbc.dart';
 class MySqlConnectionProxy implements Connection {
   @override
   String? databaseName;
+
+  @override
+  Function()? onClose;
+
   @override
   String? version;
   mc.MySQLConnection? client;
@@ -17,6 +21,7 @@ class MySqlConnectionProxy implements Connection {
     Uri address, {
     Map<String, dynamic>? properties,
     required Completer waiter,
+    this.onClose,
   }) {
     this.properties = properties ?? <String, dynamic>{};
     databaseName = this.properties['db'];
@@ -24,7 +29,7 @@ class MySqlConnectionProxy implements Connection {
       host: address.host,
       port: address.port,
       userName: this.properties[DriverManager.usrKey],
-      password: this.properties[DriverManager.usrKey],
+      password: this.properties[DriverManager.pwdKey],
       databaseName: this.properties['db'],
     ).then((conn) {
       client = conn;
@@ -35,8 +40,9 @@ class MySqlConnectionProxy implements Connection {
   }
 
   @override
-  Future<void> close() {
-    return client!.close();
+  Future<void> close() async {
+    await client!.close();
+    onClose?.call();
   }
 
   @override
