@@ -31,6 +31,8 @@ class MySqlConnectionProxy implements Connection {
       userName: this.properties[DriverManager.usrKey],
       password: this.properties[DriverManager.pwdKey],
       databaseName: this.properties['db'],
+      secure: bool.parse(this.properties['secure']),
+      collation: this.properties['collation'] ?? 'utf8mb4_general_ci',
     ).then((conn) {
       client = conn;
       client!.connect().then((v) {

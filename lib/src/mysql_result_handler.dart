@@ -49,7 +49,7 @@ class MysqlResultHandler {
     var colIdx = rs.numOfColumns;
     rs.rowsStream.listen((event) {
       List<dynamic> row = List.filled(colIdx, null);
-      Map<String, dynamic> rowRs = event.assoc();
+      Map<String, dynamic> rowRs = event.typedAssoc();
       rowRs.forEach((key, value) {
         var idx = metas.indexWhere((element) => element.name == key);
         row[idx] = value;
