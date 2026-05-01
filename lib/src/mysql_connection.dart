@@ -4,7 +4,7 @@
 
 part of '../mysql_dart_gdbc.dart';
 
-class MySqlConnectionProxy implements Connection {
+class MySqlConnectionProxy extends Connection {
   @override
   String? databaseName;
 
@@ -31,7 +31,7 @@ class MySqlConnectionProxy implements Connection {
       userName: this.properties[DriverManager.usrKey],
       password: this.properties[DriverManager.pwdKey],
       databaseName: this.properties['db'],
-      secure: bool.parse(this.properties['secure']),
+      secure: bool.parse(this.properties['secure'] ?? 'true'),
       collation: this.properties['collation'] ?? 'utf8mb4_general_ci',
     ).then((conn) {
       client = conn;
